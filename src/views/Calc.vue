@@ -4,9 +4,9 @@
         <span class="MyId">Basic Calculator</span>
     </footer>
 
-<v-card class="mx-auto" max-width="344" color="#2b3a40">
+<v-card class="mx-auto" max-width="344" color="blue-grey-darken-1">
     <div class="output">
-        <div class="outputCalc">{{ calculatorValue || 0 }}</div>
+        <div class="outputCalc" style="color: black; font-weight: bold;">{{ calculatorValue || 0 }}</div>
     </div>
     <div class="buttons">
         <div class="button" v-for="n in btnArr" :key="n"

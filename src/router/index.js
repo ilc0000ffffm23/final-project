@@ -3,8 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import Calc from '../views/Calc.vue'
 import AboutApp from '../views/AboutApp.vue'
 import Quiz from '../views/Quiz.vue'
-import Signin from '../views/Signin.vue' 
-import Register from '../views/Register.vue' 
+import Signin from '../views/Signin.vue'
+import Register from '../views/Register.vue'
+import StringApp from '../views/StringApp.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const router = createRouter({
@@ -35,6 +36,14 @@ const router = createRouter({
       path: '/quiz',
       name: 'quiz',
       component: Quiz,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/string',
+      name: 'string',
+      component: StringApp,
       meta: {
         requiresAuth: true,
       },
@@ -76,7 +85,7 @@ router.beforeEach(async (to, from, next) => {
   } else {
     next();
   }
-  
+
 });
 
 export default router

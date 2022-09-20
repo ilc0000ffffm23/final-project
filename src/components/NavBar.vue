@@ -11,7 +11,7 @@
             <v-menu open-on-hover color="#2b3a40">
                 <template v-slot:activator="{ props }">
                     <v-btn color="white" v-bind="props">
-                        Dropdown
+                        Explore
                     </v-btn>
                 </template>
 
@@ -72,6 +72,7 @@ const isLoggedIn = ref(false);
 const items = ref([
     { title: 'Home', icon: 'mdi-home', path: '/' },
     { title: 'Calculator', icon: 'mdi-calculator-variant', path: '/calc' },
+    { title: 'String App', icon: 'mdi-alpha-s-circle', path: '/string' },
     { title: 'Quiz Pro Quo', icon: 'mdi-lightbulb-on', path: '/quiz' },
     { title: 'About the App', icon: 'mdi-folder-information', path: '/aboutapp' }
    

@@ -36,9 +36,9 @@ const password = ref("");
 const router = useRouter();
 const db = getFirestore();
 const userRef = collection(db, "users");
+
 function signin() {
-    signInWithEmailAndPassword(getAuth(), email.value, password.value)
-        .then((data) => {
+    signInWithEmailAndPassword(getAuth(), email.value, password.value).then((data) => {
             // addDoc(userRef, { email: email.value, score: 0 });
             setDoc(doc(db, "users", email.value), { email: email.value, score: 0 });
             console.log(userRef.id);
