@@ -3,15 +3,9 @@
         <v-toolbar app style="background-color: #0f2027;">
             <v-app-bar-nav-icon color="white" @click='toggleDrawer'></v-app-bar-nav-icon>
             <v-toolbar-title>
-            <!-- v-btn here -->
+                
             </v-toolbar-title>
             <v-spacer></v-spacer>
-
-            <v-btn href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" flat
-                color="black">
-                <v-icon color="yellow">mdi-star</v-icon>
-                <span>Click for Fun</span>
-            </v-btn>
 
             <!-- dropdown menu -->
             <v-menu open-on-hover color="#2b3a40">
@@ -29,17 +23,27 @@
                 </v-list>
             </v-menu>
 
+            <v-btn href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" flat
+                color="black">
+                <v-icon color="yellow">mdi-star</v-icon>
+                <span>Click for Fun</span>
+            </v-btn>
+
+            <v-btn @click="handleSignOut" v-if="isLoggedIn" color="black">
+                <v-icon color="white">mdi-logout</v-icon>
+                <strong><span>Sign Out</span></strong>
+              </v-btn>
+        
 
 
         </v-toolbar>
 
-        <v-navigation-drawer app v-model="drawer"
-            style="background: url('../img/dr.jpg') no-repeat center center fixed !important;
+        <v-navigation-drawer app v-model="drawer" style="background: url('../img/dr.jpg') no-repeat center center fixed !important;
             background-size: cover;">
             <center>
                 <br>
                 <v-list-item-title>
-                    <h3>Welcome user!</h3>
+                    <h3>Vue Panel</h3>
                 </v-list-item-title>
             </center>
             <br>
@@ -55,17 +59,46 @@
 </template>
   
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const drawer = ref(false)
 
+const isLoggedIn = ref(false);
+
 const items = ref([
-    { title: 'Home', icon: 'mdi-home', path: '/' }
+    { title: 'Home', icon: 'mdi-home', path: '/' },
+    { title: 'Calculator', icon: 'mdi-calculator-variant', path: '/calc' },
+    { title: 'Quiz Pro Quo', icon: 'mdi-lightbulb-on', path: '/quiz' },
+    { title: 'About the App', icon: 'mdi-folder-information', path: '/aboutapp' }
+   
 ])
 
+let auth;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedIn.value = true;
+      const info = user.email;
+      console.log(info);
+    } else {
+      isLoggedIn.value = false;
+      console.log("not logged in");
+    }
+  });
+});
 function toggleDrawer() {
-    return drawer.value = !drawer.value
+  return (drawer.value = !drawer.value);
 }
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+    router.push("/signin");
+  });
+};
 </script>
   
 <style scoped>
