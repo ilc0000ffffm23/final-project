@@ -74,6 +74,8 @@ const items = ref([
     { title: 'Calculator', icon: 'mdi-calculator-variant', path: '/calc' },
     { title: 'String App', icon: 'mdi-alpha-s-circle', path: '/string' },
     { title: 'Quiz Pro Quo', icon: 'mdi-lightbulb-on', path: '/quiz' },
+    { title: 'About Developer', icon: 'mdi-account', path: '/aboutme' },
+    { title: 'About Vuetify', icon: 'mdi-vuejs', path: '/vuetify' },
     { title: 'About the App', icon: 'mdi-folder-information', path: '/aboutapp' }
    
 ])

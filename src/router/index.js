@@ -6,6 +6,8 @@ import Quiz from '../views/Quiz.vue'
 import Signin from '../views/Signin.vue'
 import Register from '../views/Register.vue'
 import StringApp from '../views/StringApp.vue'
+import Aboutme from '../views/Aboutme.vue'
+import Vuetify from '../views/Vuetify.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const router = createRouter({
@@ -44,6 +46,22 @@ const router = createRouter({
       path: '/string',
       name: 'string',
       component: StringApp,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/aboutme',
+      name: 'aboutme',
+      component: Aboutme,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/vuetify',
+      name: 'vuetify',
+      component: Vuetify,
       meta: {
         requiresAuth: true,
       },

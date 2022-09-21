@@ -1,9 +1,9 @@
 <template>
     <v-container fluid class="">
-        <h1 class="text-center mt-16 mb-10 text-blue-grey-darken-3">
+        <h1 class="text-center mt-16 mb-10 text-blue-grey-darken-4">
             Sign In
         </h1>
-        <v-card color="brown-lighten-5" class="border-rounded mx-auto" style="width: 600px">
+        <v-card color="#E2E2E2" class="border-rounded mx-auto" style="width: 600px">
             <v-container>
                 <p class="mb-5 ml-2">We are glad to have you back!</p>
                 <v-text-field type="text" placeholder="Email" v-model="email"></v-text-field>
